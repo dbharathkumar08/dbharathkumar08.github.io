@@ -51,7 +51,7 @@ d3.csv("finalCSV.csv", function(error, data) {
 data.forEach(function(d) {
 
 d.Year = d.Year;
-d[place] = d[place];
+d[place] = + d[place];
 });
 // Scale the range of the data
 x.domain(d3.extent(data, function(d) { return d.Year; }));
@@ -94,3 +94,4 @@ svg.append("g")
 .call(yAxis);
 });
 }
+
