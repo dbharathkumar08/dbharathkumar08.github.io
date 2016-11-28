@@ -58,9 +58,12 @@ x.domain(d3.extent(data, function(d) { return d.Year; }));
 y.domain([0, d3.max(data, function(d) { return d[place]; })]);
 // Add the valueline path.
 svg.append("path")
-.attr("class", "line")
+.attr("class", "line lineClass")
 .attr("d", valueline(data));
 // Add the scatterplot
+
+   
+   
 svg.selectAll("dot")  
 .data(data)     
 .enter().append("circle")               
