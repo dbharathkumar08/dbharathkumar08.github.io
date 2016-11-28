@@ -282,3 +282,57 @@ function draw_Methane(place){
             .call(yAxis);
     });
 }
+
+
+$(document).ready(function(){
+    $('#purpose').on('change', function() {
+        if ( this.value == '2')
+        {
+            $("#No2_graph").show();
+        }
+        else
+        {
+            $("#No2_graph").hide();
+        }
+    });
+});
+
+$(document).ready(function(){
+    $('#purpose').on('change', function() {
+        if ( this.value == '1')
+        {
+            $("#Co2_graph").show();
+        }
+        else
+        {
+            $("#Co2_graph").hide();
+        }
+    });
+});
+
+$(document).ready(function(){
+    $('#purpose').on('change', function() {
+        if ( this.value == '3')
+        {
+            $("#Methane_graph").show();
+        }
+        else
+        {
+            $("#Methane_graph").hide();
+        }
+    });
+});
+
+$(document).ready(function(){
+    $('#purpose').on('change', function() {
+        if ( this.value == '0')
+        {
+            $("#Methane_graph").show();
+            $("#Co2_graph").show();
+            $("#No2_graph").show();
+        }
+        else
+        {
+        }
+    });
+});
