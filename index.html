@@ -12,33 +12,33 @@
 <script src="Line.js"></script>
 <script src="AllGreenHouseGases.js"></script>
 <style type="text/css">
-	output {
-		position: absolute;
-		background-image: linear-gradient(#444444, #999999);
-		width: 40px;
-		height: 40px;
-		text-align: center;
-		color: white;
-		border-radius: 10px;
-		display: inline-block;
-		font: bold 15px/30px Georgia;
-		bottom: 125%;
-		left: 0;
-	}
-	output:after {
-		content: "";
-		position: absolute;
-		width: 0;
-		height: 0;
-		border-top: 18px solid #999999;
-		border-left: 5px solid transparent;
-		border-right: 5px solid transparent;
-		top: 90%;
-		left: 50%;
-		margin-left: -5px;
-		margin-top: 1px;
-	}
-	form { position: relative;}
+    output {
+        position: absolute;
+        background-image: linear-gradient(#444444, #999999);
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        color: white;
+        border-radius: 10px;
+        display: inline-block;
+        font: bold 15px/30px Georgia;
+        bottom: 125%;
+        left: 0;
+    }
+    output:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-top: 18px solid #999999;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        top: 90%;
+        left: 50%;
+        margin-left: -5px;
+        margin-top: 1px;
+    }
+    form { position: relative;}
 </style>
 <script type="text/javascript">
     function modifyOffset() {
@@ -84,77 +84,77 @@
     window.onload = modifyInputs;
 </script>
 <style>
-	body {
-		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-		width: 1200px;
-		height: 700px;
-		position: relative;
-	}
-	#canvas {
-	}
-	#canvas-svg {
-	}
-	.land {
-		fill: #222;
-	}
-	.boundary {
-		fill: none;
-		stroke: #fff;
-		stroke-width: 1px;
-	}
-	#tooltip-container {
-		position: absolute;
-		background-color: #fff;
-		color: #000;
-		padding: 10px;
-		border: 1px solid;
-		display: none;
-		z-index: 2;
-	}
-	.tooltip_key {
-		font-weight: bold;
-	}
-	.tooltip_value {
-		margin-left: 20px;
-		float: right;
-	}
-	.lineClass {
-		fill: none;
-		stroke: steel-blue;
-		stroke-width: 1px;
-	}
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        width: 1200px;
+        height: 700px;
+        position: relative;
+    }
+    #canvas {
+    }
+    #canvas-svg {
+    }
+    .land {
+        fill: #222;
+    }
+    .boundary {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 1px;
+    }
+    #tooltip-container {
+        position: absolute;
+        background-color: #fff;
+        color: #000;
+        padding: 10px;
+        border: 1px solid;
+        display: none;
+        z-index: 2;
+    }
+    .tooltip_key {
+        font-weight: bold;
+    }
+    .tooltip_value {
+        margin-left: 20px;
+        float: right;
+    }
+    .lineClass {
+        fill: none;
+        stroke: steel-blue;
+        stroke-width: 1px;
+    }
 
-	.line {
-		fill: none;
-		stroke: steelblue;
-		stroke-width: 1.5px;
-	}
-	.axis text {
-		font-family: sans-serif;
-		font-size: 11px;
-	}
-	.axis path,
-	.axis line {
-		fill: none;
-		stroke: grey;
-		stroke-width: 1;
-		shape-rendering: crispEdges;
-	}
-	.linetooltip{
-		position: absolute;
-		text-align: center;
-		width: 120px;
-		height: 35px;
-		padding:5px;
-		margin-top: 6px;
-		font: 12px sans-serif;
-		background: lightsteelblue;
-		border: 0px;
-		border-radius: 8px;
-		pointer-events: none;
-	}
+    .line {
+        fill: none;
+        stroke: steelblue;
+        stroke-width: 1.5px;
+    }
+    .axis text {
+        font-family: sans-serif;
+        font-size: 11px;
+    }
+    .axis path,
+    .axis line {
+        fill: none;
+        stroke: grey;
+        stroke-width: 1;
+        shape-rendering: crispEdges;
+    }
+    .linetooltip{
+        position: absolute;
+        text-align: center;
+        width: 120px;
+        height: 35px;
+        padding:5px;
+        margin-top: 6px;
+        font: 12px sans-serif;
+        background: lightsteelblue;
+        border: 0px;
+        border-radius: 8px;
+        pointer-events: none;
+    }
 
-	}
+    }
 </style>
 <div id="tooltip-container"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
@@ -424,7 +424,7 @@
                         $("#tooltip-container").hide();
                     })
                     .on("click", function(d){
-
+                        $(".content .value").html(d.properties.name);
                         draw_Line(d.properties.name);
                         draw_NO2(d.properties.name);
                         draw_CO2(d.properties.name);
@@ -448,39 +448,68 @@
 
 </script>
 <style>
-	/* CSS used here will be applied after bootstrap.css */
-	.col-xs-12,.col-sm-12,.col-md-12,.col-lg-12{margin-bottom: 20px;}
+    /* CSS used here will be applied after bootstrap.css */
+    .col-xs-12,.col-sm-12,.col-md-12,.col-lg-12{margin-bottom: 20px;}
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
 <body>
 <div class="container">
-	<div class="row jumbotron" style="margin-top: 10px; margin-left: 10px">
-		<div>
-			<p>
-				<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-					Greenhouse Gases Trend Over the Years
-				</button>
-			</p>
-			<div class="collapse" id="collapseExample">
-				<div class="col-lg-12" id="line_graph">
-					<script type="text/javascript">
+    <div class="row jumbotron" style="margin-top: 10px; margin-left: 10px">
+        <div class="text-center"><h2>Climate Change</h2></div>
+        <div>
+            <div class="col-lg-12">
+                <div>
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Greenhouse Gases Trend Over the Years
+                    </button>
+                </div>
+                <div class="content text-center"><h3><span class='value'></span></h3></div>
 
+            </div>
+            <div class="collapse" id="collapseExample">
+                <div class="col-lg-12" id="line_graph">
+                    <script type="text/javascript">
                         draw_Line("World");
-					</script>
-				</div>
-			</div>
-		</div>
-		<div class="row" style="margin-top: 20px; margin-left: 10px">
-			<div class="col-lg-3" >
-			</div>
-			<div class="col-lg-7" id="canvas-svg" >
-				<script type="text/javascript">
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <div>
+
+            <div class="col-lg-12">
+                <div >
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+                        Greenhouse Gases Trend Over the Years
+                    </button>
+                </div>
+                <div  class="text-center">
+                    <h3>World</h3>
+                </div>
+
+
+
+
+            </div>
+            <div class="collapse" id="collapseExample1">
+                <div class="col-lg-12" id="world_graph">
+                    <script type="text/javascript">
+                        draw_World("World");
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 20px; margin-left: 10px">
+            <div class="col-lg-3" >
+            </div>
+            <div class="col-lg-7" id="canvas-svg" >
+                <script type="text/javascript">
                     callMe(2012);
-				</script>
-			</div>
-		</div>
-	</div>
-	<!-- <div>
+                </script>
+            </div>
+        </div>
+    </div>
+    <!-- <div>
 
         <select id='purpose'>
             <option value="0">Display All</option>
@@ -507,18 +536,18 @@
         </div>
 
     </div> !-->
-	<div class="row" style="margin-top: 8px; margin-left: 10px">
-		<div class="col-lg-3" ></div>
+    <div class="row" style="margin-top: 8px; margin-left: 10px">
+        <div class="col-lg-3" ></div>
 
-		<div class="col-lg-6" >
-			<form>
-				<input type="range" name="foo" min="1970" max="2012" value="2012" step="1">
-				<output for="foo" onforminput="value = foo.valueAsNumber;"></output>
-			</form>
+        <div class="col-lg-6" >
+            <form>
+                <input type="range" name="foo" min="1970" max="2012" value="2012" step="1">
+                <output for="foo" onforminput="value = foo.valueAsNumber;"></output>
+            </form>
 
-		</div>
-		<div class="col-lg-3" ></div>
-	</div>
+        </div>
+        <div class="col-lg-3" ></div>
+    </div>
 
 
 </div>
@@ -582,78 +611,155 @@
 </div> !-->
 
 <div class="container">
-	<div class="row">
-		<h1 class="page-header">Explore each greenhouse gases trend over the years.</h1>
+    <div class="row">
+        <h1 class="page-header ">Explore each greenhouse gases trend over the years. <div class="content text-center"><h2><span class='value'></span></h2></div></h1>
 
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<div class="pull-right"> <a id="expandAll"  class="btn btn-default" role="button">Expand All</a>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="pull-right"> <a id="expandAll"  class="btn btn-default" role="button">Expand All</a>
 
-				<a id="collapseAll"  class="btn btn-default" role="button">Collapse All</a>
-			</div>
-		</div>
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<div class="panel-group" id="accordion">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="">
-								Carbon Di Oxide Graph
-							</a>
-						</h4>
+                <a id="collapseAll"  class="btn btn-default" role="button">Collapse All</a>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="">
+                                Carbon Di Oxide Graph
+                            </a>
+                        </h4>
 
-					</div>
-					<div id="collapseOne" class="panel-collapse collapse">
-						<div class="panel-body">
-							<div class="col-lg-12" id="Co2_graph">
-								<script type="text/javascript">
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="col-lg-12" id="Co2_graph">
+                                <script type="text/javascript">
                                     draw_CO2("World");
-								</script>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="">
-								Nitrous Oxide Graph
-							</a>
-						</h4>
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="">
+                                Nitrous Oxide Graph
+                            </a>
+                        </h4>
 
-					</div>
-					<div id="collapseTwo" class="panel-collapse collapse">
-						<div class="panel-body">
-							<div class="col-lg-12" id="No2_graph">
-								<script type="text/javascript">
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="col-lg-12" id="No2_graph">
+                                <script type="text/javascript">
                                     draw_NO2("World");
-								</script>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="">
-								Methane Graph
-							</a>
-						</h4>
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="">
+                                Methane Graph
+                            </a>
+                        </h4>
 
-					</div>
-					<div id="collapseThree" class="panel-collapse collapse">
-						<div class="panel-body">
-							<div class="col-lg-12" id="Methane_graph">
-								<script type="text/javascript">
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="col-lg-12" id="Methane_graph">
+                                <script type="text/javascript">
                                     draw_Methane("World");
-								</script>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+<div class="container">
+    <div class="row">
+        <h1 class="page-header ">Explore each greenhouse gases trend over the years. <div class="content text-center"><h2>World</h2></div></h1>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="pull-right"> <a id="expandAll1"  class="btn btn-default" role="button">Expand All</a>
+
+                <a id="collapseAll1"  class="btn btn-default" role="button">Collapse All</a>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="panel-group" id="accordion1">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse1" data-parent="#accordion1" href="#collapseOne1" class="">
+                                Carbon Di Oxide Graph
+                            </a>
+                        </h4>
+
+                    </div>
+                    <div id="collapseOne1" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="col-lg-12" id="Co2_World_graph">
+                                <script type="text/javascript">
+                                    draw_World_CO2("World");
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse1" data-parent="#accordion1" href="#collapseTwo1" class="">
+                                Nitrous Oxide Graph
+                            </a>
+                        </h4>
+
+                    </div>
+                    <div id="collapseTwo1" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="col-lg-12" id="No2_World_graph">
+                                <script type="text/javascript">
+                                    draw_World_NO2("World");
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse1" data-parent="#accordion1" href="#collapseThree1" class="">
+                                Methane Graph
+                            </a>
+                        </h4>
+
+                    </div>
+                    <div id="collapseThree1" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="col-lg-12" id="Methane_World_graph">
+                                <script type="text/javascript">
+                                    draw_World_Methane("World");
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 
 <!-- Bootstrap core JavaScript
