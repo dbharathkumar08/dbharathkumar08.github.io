@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  position: relative;
+  width: 960px;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+  fill-opacity: .9;
+}
+
+.x.axis path {
+  display: none;
+}
+
+label {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+</style>
+<label><input type="button">Sort</label>
+
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script>
+
+
+function plot_sorted_bar(yr){
+var year = yr;
+var margin = {top: 20, right: 20, bottom: 30, left: 80},
+    width = 500 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
+
+
+
+var y = d3.scale.ordinal()
+    .rangeRoundBands([0, height], .1, 1);
+
+var x = d3.scale.linear()
+    .range([width, 0]);
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+    .ticks(5);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.csv("coda.csv", function(error, data) {
+
+  data.forEach(function(d) {
+    d[year] = +d[year];
+  });
+    //data.filter(function(d) { return d[year] > 20,000,000 });
+    y.domain(data.sort(true? function(a, b) { return b[year] - a[year]; }: function(a, b) { return d3.ascending(a.Country, b.Country); })
+        .slice(0,40)
+        .map(function(d) { console.log(d.Country);return d.Country; }));
+  x.domain([0, d3.max(data, function(d) { return d[year]; })]);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    ;
+
+  svg.selectAll(".bar")
+      .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("y", function(d) { return y(d.Country); })
+      .attr("height", y.rangeBand())
+      .attr("x", function(d) { return x(d[year]); })
+      .attr("width", function(d) { return height - x(d[year]); });
+
+
+});
+
+
+}
+
+plot_sorted_bar(2000);
+</script>
