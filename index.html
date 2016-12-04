@@ -10,7 +10,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="Line.js"></script>
-<script src="AllGreenHouseGases.js"></script>
+
 <style type="text/css">
     output {
         position: absolute;
@@ -41,6 +41,11 @@
     form { position: relative;}
 </style>
 <script type="text/javascript">
+
+
+
+
+
     function modifyOffset() {
         var el, newPoint, newPlace, offset, siblings, k;
         width    = this.offsetWidth;
@@ -221,7 +226,7 @@
     function callMe(year){
         var element= document.getElementById("canvas-svg").innerHTML = "";
         d3.csv("coda.csv", function(err, data) {
-           
+
             var config = {"data0":"Country","data1":year,
                 "label0":"label 0","label1":"label 1","color0":"#e6f7ff","color1":"#004466",
                 "width":2200,"height":650}
@@ -384,7 +389,7 @@
                         if (valueHash[d.properties.name]) {
 
                             var c = computeColor((valueHash[d.properties.name]));
-                           
+
                             var color = colors[c].getColors();
                             return "rgb(" + color.r + "," + color.g +
                                 "," + color.b + ")";
@@ -430,7 +435,7 @@
                         }
                     })
                     .on("mouseout", function() {
-                      
+
                         $(this).attr("fill-opacity", "1.0");
                         d3.select(this).style("fill", function(d) {
                             if (valueHash[d.properties.name]) {
@@ -449,7 +454,7 @@
                         $(".content .value").html(d.properties.name);
                         draw_Line(d.properties.name);
                         draw_NO2(d.properties.name);
-                        draw_CO2(d.properties.name);
+                        draw_Co2(d.properties.name);
                         draw_Methane(d.properties.name);
 
 
@@ -478,8 +483,8 @@
   .attr("y", function(d, i){ return 400 - (i*ls_h) - 2*ls_h;})
   .attr("width", ls_w)
   .attr("height", ls_h)
-  .style("fill", function(d, i) { 
-    var color =  colors[i].getColors(); 
+  .style("fill", function(d, i) {
+    var color =  colors[i].getColors();
     return "rgb(" + color.r + "," + color.g +
                                 "," + color.b + ")";
 })
@@ -597,6 +602,7 @@
 <style>
     /* CSS used here will be applied after bootstrap.css */
     .col-xs-12,.col-sm-12,.col-md-12,.col-lg-12{margin-bottom: 20px;}
+
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
 <body>
@@ -608,10 +614,10 @@
             and compare it with greenhouse gases in the world overall. We would like to discover any interesting trends and find reasons behind them. Select each country to view its greenhouse gas trends.</h8></div>
     </div>
     <div class="col-lg-6" style="float:right;">
-        <div class="row" style="float:right">
-                    <select id='purpose'>
+        <div class="row" style="float:right" >
+                    <select id='purpose' >
                         <option value="0">Total green house gases Emission    </option>
-                        <option value="1">Cabon dioxide Emission       </option>
+                        <option value="1">Carbon dioxide Emission       </option>
                         <option value="2">Methane Emission     </option>
                         <option value="3">Nitrous oxide Emission     </option>
                     </select>
@@ -620,12 +626,46 @@
 
         <div class="row">
 
-                <div id="world_graph">
+                <div id="AllgreenHouse">
+                    <div class="col-lg-12" id="line_graph">
                     <script type="text/javascript">
-                        draw_World("World");
+                        draw_Line("World");
+                    </script>
+                    </div>
+                </div>
+        </div>
+        <div class="row">
+
+
+                <div class="col-lg-12" id="Co2_graph">
+                    <script type="text/javascript">
+                        draw_Co2("World");
+                    </script>
+
+            </div>
+        </div>
+        <div class="row">
+
+
+                <div class="col-lg-12" id="No2_graph">
+                    <script type="text/javascript">
+                        draw_NO2("World");
+                    </script>
+                </div>
+
+        </div>
+        <div class="row">
+
+
+                <div class="col-lg-12" id="Methane_graph">
+                    <script type="text/javascript">
+                        draw_Methane("World");
                     </script>
                 </div>
         </div>
+
+
+
     </div>
 </div>
 <div class="row">
