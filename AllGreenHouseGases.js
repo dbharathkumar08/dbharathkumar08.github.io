@@ -24,7 +24,7 @@ function draw_Co2(place){
 // Set the dimensions of the canvas / graph
     var place2 = "World";
     var margin = {top: 30, right: 180, bottom: 50, left: 100},
-        width = 1100 - margin.left - margin.right,
+        width = 900 - margin.left - margin.right,
         height = 250 - margin.top - margin.bottom;
 // Parse the date / time
 // Set the ranges
@@ -226,7 +226,7 @@ function draw_Methane(place){
 // Set the dimensions of the canvas / graph
     var place2 = "World";
     var margin = {top: 30, right: 180, bottom: 50, left: 100},
-        width = 1100 - margin.left - margin.right,
+        width = 900 - margin.left - margin.right,
         height = 250 - margin.top - margin.bottom;
 // Parse the date / time
 // Set the ranges
@@ -426,7 +426,7 @@ function draw_NO2(place){
 // Set the dimensions of the canvas / graph
     var place2 = "World";
     var margin = {top: 30, right: 180, bottom: 50, left: 100},
-        width = 1100 - margin.left - margin.right,
+        width = 900 - margin.left - margin.right,
         height = 250 - margin.top - margin.bottom;
 // Parse the date / time
 // Set the ranges
