@@ -25,7 +25,7 @@ function draw_Co2(place){
     var place2 = "World";
     var margin = {top: 30, right: 180, bottom: 50, left: 100},
         width = 900 - margin.left - margin.right,
-        height = 250 - margin.top - margin.bottom;
+        height = 200 - margin.top - margin.bottom;
 // Parse the date / time
 // Set the ranges
     var x = d3.scale.linear().range([0, width]);
@@ -227,7 +227,7 @@ function draw_Methane(place){
     var place2 = "World";
     var margin = {top: 30, right: 180, bottom: 50, left: 100},
         width = 900 - margin.left - margin.right,
-        height = 250 - margin.top - margin.bottom;
+        height = 200 - margin.top - margin.bottom;
 // Parse the date / time
 // Set the ranges
     var x = d3.scale.linear().range([0, width]);
@@ -427,7 +427,7 @@ function draw_NO2(place){
     var place2 = "World";
     var margin = {top: 30, right: 180, bottom: 50, left: 100},
         width = 900 - margin.left - margin.right,
-        height = 250 - margin.top - margin.bottom;
+        height = 200 - margin.top - margin.bottom;
 // Parse the date / time
 // Set the ranges
     var x = d3.scale.linear().range([0, width]);
