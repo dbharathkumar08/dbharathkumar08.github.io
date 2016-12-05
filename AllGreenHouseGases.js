@@ -20,19 +20,19 @@ function valueFormat(d,city) {
 function draw_Co2(place){
     parent.document.getElementById("Co2_graph").innerHTML = "";
     // window.alert(place);
-    console.log(place);
+    //console.log(place);
 // Set the dimensions of the canvas / graph
     var place2 = "World";
-    var margin = {top: 30, right: 20, bottom: 30, left: 100},
-        width = 900 - margin.left - margin.right,
-        height = 200 - margin.top - margin.bottom;
+    var margin = {top: 10, right: 20, bottom: 30, left: 30},
+        width = 670 - margin.left - margin.right,
+        height = 150 - margin.top - margin.bottom;
 // Parse the date / time
 // Set the ranges
     var x = d3.scale.linear().range([0, width]);
     var y = d3.scale.linear().range([height, 0]);
 // Define the axes
     var xAxis = d3.svg.axis().scale(x)
-        .orient("bottom").ticks(15);
+        .orient("bottom").ticks(10);
     var yAxis = d3.svg.axis().scale(y)
         .orient("left").ticks(5);
 // Define the line
@@ -69,28 +69,28 @@ function draw_Co2(place){
         var maxWorld = + d3.max(data, function(d) { return + d[place2]; });
         var minWorld = + d3.min(data, function(d) { return + d[place2]; });
 
-        console.log(max);
-        console.log(min);
+        //console.log(max);
+        //console.log(min);
 
-        console.log(maxWorld);
-        console.log(minWorld);
+        //console.log(maxWorld);
+        //console.log(minWorld);
 
         var offset = + 100/ (max - min);
         var offsetWorld = + 100/ (maxWorld - minWorld);
 
-        console.log(offset);
+        //console.log(offset);
 
-        console.log(offsetWorld);
+        //console.log(offsetWorld);
         data.forEach(function(d) {
 
-            console.log(d[place]);
-            console.log(d[place2]);
+            //console.log(d[place]);
+            //console.log(d[place2]);
             d.Year = d.Year;
             d[place] = + ((+ (+ d[place] - max) * offset)) + 100;
-            console.log(d[place]);
+            //console.log(d[place]);
             if(place!="World"){
                 d[place2] = + ((+ (+ d[place2] - maxWorld) * offsetWorld)) + 100;
-                console.log(d[place2]);
+                //console.log(d[place2]);
             }
 
         });
@@ -107,7 +107,17 @@ function draw_Co2(place){
             .style("stroke", "red")
             .attr("d", valueline2(data));
 // Add the scatterplot
-
+        var area = "";
+        if(place!='World'){
+            area = place+" vs ";
+        }
+        svg.append("text")
+            .attr("x", (width/3.4))             
+            .attr("y", 15)
+            .attr("text-anchor", "middle")  
+            .style("font-size", "11px") 
+            .style("text-decoration", "underline")  
+            .text(area+"World Graph for CO2 Emission");
 
 
         svg.selectAll("dot")
@@ -171,19 +181,19 @@ function draw_Co2(place){
 function draw_Methane(place){
     parent.document.getElementById("Methane_graph").innerHTML = "";
     // window.alert(place);
-    console.log(place);
+    //console.log(place);
 // Set the dimensions of the canvas / graph
     var place2 = "World";
-    var margin = {top: 30, right: 20, bottom: 30, left: 100},
-        width = 900 - margin.left - margin.right,
-        height = 200 - margin.top - margin.bottom;
+    var margin = {top: 10, right: 20, bottom: 30, left: 30},
+        width = 670 - margin.left - margin.right,
+        height = 150 - margin.top - margin.bottom;
 // Parse the date / time
 // Set the ranges
     var x = d3.scale.linear().range([0, width]);
     var y = d3.scale.linear().range([height, 0]);
 // Define the axes
     var xAxis = d3.svg.axis().scale(x)
-        .orient("bottom").ticks(15);
+        .orient("bottom").ticks(10);
     var yAxis = d3.svg.axis().scale(y)
         .orient("left").ticks(5);
 // Define the line
@@ -220,28 +230,28 @@ function draw_Methane(place){
         var maxWorld = + d3.max(data, function(d) { return + d[place2]; });
         var minWorld = + d3.min(data, function(d) { return + d[place2]; });
 
-        console.log(max);
-        console.log(min);
+        //console.log(max);
+        //console.log(min);
 
-        console.log(maxWorld);
-        console.log(minWorld);
+        //console.log(maxWorld);
+        //console.log(minWorld);
 
         var offset = + 100/ (max - min);
         var offsetWorld = + 100/ (maxWorld - minWorld);
 
-        console.log(offset);
+        //console.log(offset);
 
-        console.log(offsetWorld);
+        //console.log(offsetWorld);
         data.forEach(function(d) {
 
-            console.log(d[place]);
-            console.log(d[place2]);
+            //console.log(d[place]);
+            //console.log(d[place2]);
             d.Year = d.Year;
             d[place] = + ((+ (+ d[place] - max) * offset)) + 100;
-            console.log(d[place]);
+            //console.log(d[place]);
             if(place!="World"){
                 d[place2] = + ((+ (+ d[place2] - maxWorld) * offsetWorld)) + 100;
-                console.log(d[place2]);
+                //console.log(d[place2]);
             }
 
         });
@@ -310,6 +320,17 @@ function draw_Methane(place){
         svg.append("g")
             .attr("class", "y axis")
             .call(yAxis);
+            var area = "";
+        if(place!='World'){
+            area = place+" vs ";
+        }
+        svg.append("text")
+            .attr("x", (width/3.4))             
+            .attr("y", 15)
+            .attr("text-anchor", "middle")  
+            .style("font-size", "11px") 
+            .style("text-decoration", "underline")  
+            .text(area+"World Graph for Methane Emission");
 
 
     });
@@ -321,19 +342,19 @@ function draw_Methane(place){
 function draw_NO2(place){
     parent.document.getElementById("No2_graph").innerHTML = "";
     // window.alert(place);
-    console.log(place);
+    //console.log(place);
 // Set the dimensions of the canvas / graph
     var place2 = "World";
-    var margin = {top: 30, right: 20, bottom: 30, left: 100},
-        width = 900 - margin.left - margin.right,
-        height = 200 - margin.top - margin.bottom;
+    var margin = {top: 10, right: 20, bottom: 30, left: 30},
+        width = 670 - margin.left - margin.right,
+        height = 150 - margin.top - margin.bottom;
 // Parse the date / time
 // Set the ranges
     var x = d3.scale.linear().range([0, width]);
     var y = d3.scale.linear().range([height, 0]);
 // Define the axes
     var xAxis = d3.svg.axis().scale(x)
-        .orient("bottom").ticks(15);
+        .orient("bottom").ticks(10);
     var yAxis = d3.svg.axis().scale(y)
         .orient("left").ticks(5);
 // Define the line
@@ -370,28 +391,28 @@ function draw_NO2(place){
         var maxWorld = + d3.max(data, function(d) { return + d[place2]; });
         var minWorld = + d3.min(data, function(d) { return + d[place2]; });
 
-        console.log(max);
-        console.log(min);
+        //console.log(max);
+        //console.log(min);
 
-        console.log(maxWorld);
-        console.log(minWorld);
+        //console.log(maxWorld);
+        //console.log(minWorld);
 
         var offset = + 100/ (max - min);
         var offsetWorld = + 100/ (maxWorld - minWorld);
 
-        console.log(offset);
+        //console.log(offset);
 
-        console.log(offsetWorld);
+        //console.log(offsetWorld);
         data.forEach(function(d) {
 
-            console.log(d[place]);
-            console.log(d[place2]);
+            //console.log(d[place]);
+            //console.log(d[place2]);
             d.Year = d.Year;
             d[place] = + ((+ (+ d[place] - max) * offset)) + 100;
-            console.log(d[place]);
+            //console.log(d[place]);
             if(place!="World"){
                 d[place2] = + ((+ (+ d[place2] - maxWorld) * offsetWorld)) + 100;
-                console.log(d[place2]);
+                //console.log(d[place2]);
             }
 
         });
@@ -460,7 +481,17 @@ function draw_NO2(place){
         svg.append("g")
             .attr("class", "y axis")
             .call(yAxis);
-
+        var area = "";
+        if(place!='World'){
+            area = place+" vs ";
+        }
+        svg.append("text")
+            .attr("x", (width/3.4))             
+            .attr("y", 15)
+            .attr("text-anchor", "middle")  
+            .style("font-size", "11px") 
+            .style("text-decoration", "underline")  
+            .text(area+"World Graph for NO2 Emission");
 
     });
 
@@ -548,16 +579,16 @@ function draw_World(place){
     parent.document.getElementById("world_graph").innerHTML = "";
     // window.alert(place);
 // Set the dimensions of the canvas / graph
-    var margin = {top: 30, right: 20, bottom: 30, left: 100},
-        width = 900 - margin.left - margin.right,
-        height = 200 - margin.top - margin.bottom;
+    var margin = {top: 10, right: 20, bottom: 30, left: 30},
+        width = 670 - margin.left - margin.right,
+        height = 150 - margin.top - margin.bottom;
 // Parse the date / time
 // Set the ranges
     var x = d3.scale.linear().range([0, width]);
     var y = d3.scale.linear().range([height, 0]);
 // Define the axes
     var xAxis = d3.svg.axis().scale(x)
-        .orient("bottom").ticks(15);
+        .orient("bottom").ticks(10);
     var yAxis = d3.svg.axis().scale(y)
         .orient("left").ticks(5);
 // Define the line
@@ -626,6 +657,14 @@ function draw_World(place){
         svg.append("g")
             .attr("class", "y axis")
             .call(yAxis);
+        
+        svg.append("text")
+            .attr("x", (width/3.4))             
+            .attr("y", 15)
+            .attr("text-anchor", "middle")  
+            .style("font-size", "11px") 
+            .style("text-decoration", "underline")  
+            .text("World Graph for Greenhouse Emission");
     });
 }
 
@@ -634,9 +673,9 @@ function draw_World_NO2(place){
     parent.document.getElementById("No2_World_graph").innerHTML = "";
     // window.alert(place);
 // Set the dimensions of the canvas / graph
-    var margin = {top: 50, right: 20, bottom: 30, left: 100},
-        width = 900 - margin.left - margin.right,
-        height = 200 - margin.top - margin.bottom;
+    var margin = {top: 10, right: 20, bottom: 30, left: 30},
+        width = 670 - margin.left - margin.right,
+        height = 150 - margin.top - margin.bottom;
 // Parse the date / time
 // Set the ranges
     var x = d3.scale.linear().range([0, width]);
@@ -644,7 +683,7 @@ function draw_World_NO2(place){
     var formatyAxis = d3.format('.0f');
 // Define the axes
     var xAxis = d3.svg.axis().scale(x)
-        .orient("bottom").ticks(15);
+        .orient("bottom").ticks(10);
     var yAxis = d3.svg.axis().scale(y)
         .orient("left")
         .tickFormat(formatyAxis)
@@ -682,7 +721,7 @@ function draw_World_NO2(place){
         x.domain(d3.extent(data, function(d) { return d.Year; }));
         y.domain([0, d3.max(data, function(d) { return d[place]; })]);
 
-        console.log(d3.max(data, function(d) { return d[place]; }));
+        //console.log(d3.max(data, function(d) { return d[place]; }));
 // Add the valueline path.
         svg.append("path")
             .attr("class", "line")
@@ -716,6 +755,13 @@ function draw_World_NO2(place){
         svg.append("g")
             .attr("class", "y axis")
             .call(yAxis);
+        svg.append("text")
+            .attr("x", (width/3.4))             
+            .attr("y", 15)
+            .attr("text-anchor", "middle")  
+            .style("font-size", "11px") 
+            .style("text-decoration", "underline")  
+            .text("World Graph for NO2 Emission");
     });
 }
 
@@ -724,9 +770,9 @@ function draw_World_CO2(place){
     parent.document.getElementById("Co2_World_graph").innerHTML = "";
     // window.alert(place);
 // Set the dimensions of the canvas / graph
-    var margin = {top: 50, right: 20, bottom: 30, left: 100},
-        width = 900 - margin.left - margin.right,
-        height = 200 - margin.top - margin.bottom;
+    var margin = {top: 10, right: 20, bottom: 30, left: 30},
+        width = 670 - margin.left - margin.right,
+        height = 150 - margin.top - margin.bottom;
 // Parse the date / time
 // Set the ranges
     var x = d3.scale.linear().range([0, width]);
@@ -734,7 +780,7 @@ function draw_World_CO2(place){
     var formatyAxis = d3.format('.0f');
 // Define the axes
     var xAxis = d3.svg.axis().scale(x)
-        .orient("bottom").ticks(15);
+        .orient("bottom").ticks(10);
     var yAxis = d3.svg.axis().scale(y)
         .orient("left")
         .tickFormat(formatyAxis)
@@ -772,7 +818,7 @@ function draw_World_CO2(place){
         x.domain(d3.extent(data, function(d) { return d.Year; }));
         y.domain([0, d3.max(data, function(d) { return d[place]; })]);
 
-        console.log(d3.max(data, function(d) { return d[place]; }));
+        //console.log(d3.max(data, function(d) { return d[place]; }));
 // Add the valueline path.
         svg.append("path")
             .attr("class", "line")
@@ -806,6 +852,13 @@ function draw_World_CO2(place){
         svg.append("g")
             .attr("class", "y axis")
             .call(yAxis);
+        svg.append("text")
+            .attr("x", (width/3.4))             
+            .attr("y", 15)
+            .attr("text-anchor", "middle")  
+            .style("font-size", "11px") 
+            .style("text-decoration", "underline")  
+            .text("World Graph for CO2 Emission");
     });
 }
 
@@ -814,9 +867,9 @@ function draw_World_Methane(place){
     parent.document.getElementById("Methane_World_graph").innerHTML = "";
     // window.alert(place);
 // Set the dimensions of the canvas / graph
-    var margin = {top: 50, right: 20, bottom: 30, left: 100},
-        width = 900 - margin.left - margin.right,
-        height = 200 - margin.top - margin.bottom;
+    var margin = {top: 10, right: 20, bottom: 30, left: 30},
+        width = 670 - margin.left - margin.right,
+        height = 150 - margin.top - margin.bottom;
 // Parse the date / time
 // Set the ranges
     var x = d3.scale.linear().range([0, width]);
@@ -824,7 +877,7 @@ function draw_World_Methane(place){
     var formatyAxis = d3.format('.0f');
 // Define the axes
     var xAxis = d3.svg.axis().scale(x)
-        .orient("bottom").ticks(15);
+        .orient("bottom").ticks(10);
     var yAxis = d3.svg.axis().scale(y)
         .orient("left")
         .tickFormat(formatyAxis)
@@ -862,7 +915,7 @@ function draw_World_Methane(place){
         x.domain(d3.extent(data, function(d) { return d.Year; }));
         y.domain([0, d3.max(data, function(d) { return d[place]; })]);
 
-        console.log(d3.max(data, function(d) { return d[place]; }));
+        //console.log(d3.max(data, function(d) { return d[place]; }));
 // Add the valueline path.
         svg.append("path")
             .attr("class", "line")
@@ -896,5 +949,12 @@ function draw_World_Methane(place){
         svg.append("g")
             .attr("class", "y axis")
             .call(yAxis);
+        svg.append("text")
+            .attr("x", (width/3.4))             
+            .attr("y", 15)
+            .attr("text-anchor", "middle")  
+            .style("font-size", "11px") 
+            .style("text-decoration", "underline")  
+            .text("World Graph for Methane Emission");
     });
 }

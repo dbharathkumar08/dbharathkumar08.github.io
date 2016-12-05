@@ -11,6 +11,44 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="Line.js"></script>
 <script src="AllGreenHouseGases.js"></script>
+<script src="BarRank.js"></script>
+<style>
+.axis text {
+  font: 10px sans-serif;
+}
+
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+  fill-opacity: .9;
+}
+
+.x.axis path {
+  display: none;
+}
+
+label {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+</style>
+
+
+
+
+
+
+
+
 <style type="text/css">
     output {
         position: absolute;
@@ -92,7 +130,7 @@
     body {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         width: 1200px;
-        height: 700px;
+        height: 600px;
         position: relative;
     }
     #canvas {
@@ -194,6 +232,7 @@
         outputTag.style.marginLeft = offset + "%";
         outputTag.innerHTML        = this.value;
         callMe(this.value);
+        plot_sorted_bar(this.value);
 
     }
 
@@ -222,20 +261,19 @@
 
 <script>
     var varaibless,myColor;
-    var legend_labels = ["< 196+","3473+","14828+","40925+","84044+","235354+","761687+","5684924+","> 72057"];
     function callMe(year){
         var element= document.getElementById("canvas-svg").innerHTML = "";
         d3.csv("coda.csv", function(err, data) {
 
             var config = {"data0":"Country","data1":year,
                 "label0":"label 0","label1":"label 1","color0":"#e6f7ff","color1":"#004466",
-                "width":2200,"height":650}
+                "width":750,"height":550}
 
 
             var width = config.width,
                 height = config.height;
 
-            var COLOR_COUNTS =9;
+            var COLOR_COUNTS =10;
 
             function Interpolate(start, end, steps, count) {
                 var s = start,
@@ -311,8 +349,8 @@
             var MAP_VALUE = config.data1;
 
             var projection = d3.geo.mercator()
-                .scale((width) / 5.8 / Math.PI)
-                .translate([width / 4, height / 1.9])
+                .scale((width) / 2.5 / Math.PI)
+                .translate([width / 1.8, height / 1.9])
                 .precision(0.1);
 
             var path = d3.geo.path()
@@ -339,18 +377,41 @@
                 valueHash[d[MAP_KEY]] = +d[MAP_VALUE];
             });
 
+            var quantize = d3.scale.quantize()
+                .domain([0, 1.0])
+                .range(d3.range(COLOR_COUNTS).map(function(i) { return i }));
 
+            quantize.domain([d3.min(data, function(d){
+                return (+d[MAP_VALUE]) }),
+                d3.max(data, function(d){
+                    return (+d[MAP_VALUE]) })]);
+            var min = d3.min(data, function(d){ return (+d[MAP_VALUE]); });
+			var max = d3.max(data, function(d){ return (+d[MAP_VALUE]); });
+            var diff = (max-min)/1000;
+            
+            var a = 0;		   	
+            var array = [];
+            var j = 0;
+            for(var i=0;i<1000;i+=100){
+            	array[j] = a+diff;
+            	a = array[j];
+            	j+=1;
+            }
+
+            var legend_labels = [];
+            legend_labels[0] = "< "+Math.floor(array[0]);
+            var j =1;
+            for(var i=1;i<1000;i+=100){
+            	legend_labels[j] = " "+Math.floor(array[j])+"+";
+            	j+=1;
+            }
+            console.log(array);
+            legend_labels[9] = "> "+Math.floor(array[9]);
             function computeColor(hval){
-                if(hval==0) return 0;
-                if (hval <196) return 0;
-                if (hval <3473) return 1;
-                if (hval <14828) return 2;
-                if (hval <40925) return 3;
-                if (hval <84044) return 4;
-                if (hval <235354) return 5;
-                if (hval <761687) return 6;
-                if (hval <5684924) return 7;
-                return 8;
+                var i=0;
+                while(i<9 && array[i]<hval) i = i+1;
+                console.log(hval+" "+i);
+                return i;
             }
 
 
@@ -606,13 +667,16 @@
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
 <body>
-<div class="row">
-    <div class="col-lg-6 jumbotron" style="float:left;">
-        <div class="text-center"><h2>Climate Change</h2></div>
-        <hr>
-        <div class="text-center"><h8>In this visualization we try to analyse the trend of the various greenhouse gases across different countries
-            and compare it with greenhouse gases in the world overall. We would like to discover any interesting trends and find reasons behind them. Select each country to view its greenhouse gas trends.</h8></div>
+<div class=" container">
+<div class="row" style="margin-top: 10px">
+    <div class="col-lg-6 panel panel-info" style="height: 180px;width: 530px">
+        <div class="panel-heading" style="height:47px;margin-bottom: 1px"><h3 style="text-align: center;">Climate Change</h3></div>
+       
+        <div class="panel-body" style="margin-top: 1px"><p style="font-size: 15px">In this visualization we try to analyse the trend of the various greenhouse gases across different countries
+            and compare it with greenhouse gases in the world overall. We would like to discover any interesting trends and find reasons behind them. Select each country to view its greenhouse gas trends.</p>
+        </div>
     </div>
+
     <div class="col-lg-6" style="float:right;">
         <div class="row" style="float:right" >
                     <select id='purpose' >
@@ -624,8 +688,6 @@
 
         </div>
 
-        <div class="row">
-
                 <div id="AllgreenHouse">
                     <div class="col-lg-12" id="line_graph">
                     <script type="text/javascript">
@@ -635,8 +697,6 @@
                 </div>
         </div>
         <div class="row">
-
-
                 <div class="col-lg-12" id="Co2_graph">
                     <script type="text/javascript">
                         draw_Co2("World");
@@ -661,25 +721,25 @@
                     <script type="text/javascript">
                         draw_Methane("World");
                     </script>
+                    </div>
                 </div>
         </div>
 
-
-
-    </div>
 </div>
+
+
 <div class="row">
-    <div class = "col-lg-10" id="canvas-svg" style="float: left">
+    <div class = "col-lg-8" id="canvas-svg" style="float: left;">
                 <script type="text/javascript">
                     callMe(2012);
+
                 </script>
     </div>
-    <div  id ="rankChart" class = "col-lg-2" style="float: right">
+    <div  id ="rankChart" class = "col-lg-4" style="float: right">
         <script type="text/javascript">
-            rankCountries();
+            
         </script>
     </div>
-        <hr>
     <div class="row" style="margin-top: 8px; margin-left: 10px">
 
         <div class="col-lg-6" >
@@ -690,9 +750,7 @@
 
         </div>
     </div>
-
-
-    </div>
+</div>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
