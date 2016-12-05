@@ -405,12 +405,10 @@ label {
             	legend_labels[j] = " "+Math.floor(array[j])+"+";
             	j+=1;
             }
-            console.log(array);
             legend_labels[9] = "> "+Math.floor(array[9]);
             function computeColor(hval){
                 var i=0;
                 while(i<9 && array[i]<hval) i = i+1;
-                console.log(hval+" "+i);
                 return i;
             }
 

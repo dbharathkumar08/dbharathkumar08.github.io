@@ -19,9 +19,10 @@ function draw_Line(place){
     var margin = {top: 30, right: 180, bottom: 50, left: 100},
         width = 900 - margin.left - margin.right,
         height = 200 - margin.top - margin.bottom;
-// Parse the date / time
-// Set the ranges
-    var x = d3.scale.linear().range([0, width]);
+    var parse = d3.time.format("%Y").parse;
+
+    var x = d3.time.scale().range([0, width]);
+   //var x = d3.scale.linear().range([0, width]);
     var y = d3.scale.linear().range([height, 0]);
 // Define the axes
     var xAxis = d3.svg.axis().scale(x)
@@ -79,7 +80,7 @@ function draw_Line(place){
         data.forEach(function(d) {
 
 
-            d.Year = d.Year;
+            d.Year = parse(d.Year);
             d[place] = + ((+ (+ d[place] - max) * offset)) + 100;
 
             if(place!="World"){
@@ -221,9 +222,9 @@ function draw_Co2(place){
     var margin = {top: 30, right: 180, bottom: 50, left: 100},
         width = 900 - margin.left - margin.right,
         height = 200 - margin.top - margin.bottom;
-// Parse the date / time
-// Set the ranges
-    var x = d3.scale.linear().range([0, width]);
+    var parse = d3.time.format("%Y").parse;
+
+    var x = d3.time.scale().range([0, width]);
     var y = d3.scale.linear().range([height, 0]);
 // Define the axes
     var xAxis = d3.svg.axis().scale(x)
@@ -281,7 +282,7 @@ function draw_Co2(place){
 
             //console.log(d[place]);
             //console.log(d[place2]);
-            d.Year = d.Year;
+            d.Year = parse(d.Year);
             d[place] = + ((+ (+ d[place] - max) * offset)) + 100;
             //console.log(d[place]);
             if(place!="World"){
@@ -423,9 +424,10 @@ function draw_Methane(place){
     var margin = {top: 30, right: 180, bottom: 50, left: 100},
         width = 900 - margin.left - margin.right,
         height = 200 - margin.top - margin.bottom;
-// Parse the date / time
-// Set the ranges
-    var x = d3.scale.linear().range([0, width]);
+
+    var parse = d3.time.format("%Y").parse;
+
+    var x = d3.time.scale().range([0, width]);
     var y = d3.scale.linear().range([height, 0]);
 // Define the axes
     var xAxis = d3.svg.axis().scale(x)
@@ -483,7 +485,7 @@ function draw_Methane(place){
 
             //console.log(d[place]);
             //console.log(d[place2]);
-            d.Year = d.Year;
+            d.Year = parse(d.Year);
             d[place] = + ((+ (+ d[place] - max) * offset)) + 100;
             //console.log(d[place]);
             if(place!="World"){
@@ -616,16 +618,13 @@ function draw_Methane(place){
 }
 function draw_NO2(place){
     parent.document.getElementById("No2_graph").innerHTML = "";
-    // window.alert(place);
-    //console.log(place);
-// Set the dimensions of the canvas / graph
     var place2 = "World";
     var margin = {top: 30, right: 180, bottom: 50, left: 100},
         width = 900 - margin.left - margin.right,
         height = 200 - margin.top - margin.bottom;
-// Parse the date / time
-// Set the ranges
-    var x = d3.scale.linear().range([0, width]);
+    var parseYN = d3.time.format("%Y").parse;
+
+    var x = d3.time.scale().range([0, width]);
     var y = d3.scale.linear().range([height, 0]);
 // Define the axes
     var xAxis = d3.svg.axis().scale(x)
@@ -667,28 +666,14 @@ function draw_NO2(place){
         var maxWorld = + d3.max(data, function(d) { return + d[place2]; });
         var minWorld = + d3.min(data, function(d) { return + d[place2]; });
 
-        //console.log(max);
-        //console.log(min);
-
-        //console.log(maxWorld);
-        //console.log(minWorld);
-
         var offset = + 100/ (max - min);
         var offsetWorld = + 100/ (maxWorld - minWorld);
-
-        //console.log(offset);
-
-        //console.log(offsetWorld);
         data.forEach(function(d) {
 
-            //console.log(d[place]);
-            //console.log(d[place2]);
-            d.Year = d.Year;
+            d.Year = parseYN(d.Year);
             d[place] = + ((+ (+ d[place] - max) * offset)) + 100;
-            //console.log(d[place]);
             if(place!="World"){
                 d[place2] = + ((+ (+ d[place2] - maxWorld) * offsetWorld)) + 100;
-                //console.log(d[place2]);
             }
             finalplacevalue = d[place];
             finalplace2value = d[place2];
