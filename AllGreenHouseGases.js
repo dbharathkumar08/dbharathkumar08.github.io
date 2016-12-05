@@ -23,9 +23,9 @@ function draw_Co2(place){
     //console.log(place);
 // Set the dimensions of the canvas / graph
     var place2 = "World";
-    var margin = {top: 10, right: 20, bottom: 30, left: 30},
-        width = 670 - margin.left - margin.right,
-        height = 150 - margin.top - margin.bottom;
+    var margin = {top: 30, right: 180, bottom: 50, left: 100},
+        width = 1100 - margin.left - margin.right,
+        height = 250 - margin.top - margin.bottom;
 // Parse the date / time
 // Set the ranges
     var x = d3.scale.linear().range([0, width]);
@@ -59,7 +59,8 @@ function draw_Co2(place){
             "translate(" + margin.left + "," + margin.top + ")");
 // Get the data
 
-
+    var finalplacevalue=0;
+    var finalplace2value=300;
 
     d3.csv("CO2Data.csv", function(error, data) {
 
@@ -92,6 +93,9 @@ function draw_Co2(place){
                 d[place2] = + ((+ (+ d[place2] - maxWorld) * offsetWorld)) + 100;
                 //console.log(d[place2]);
             }
+
+            finalplacevalue = d[place];
+            finalplace2value = d[place2];
 
         });
 // Scale the range of the data
@@ -165,10 +169,47 @@ function draw_Co2(place){
             .attr("class", "x axis")
             .attr("transform", "translate(0," + height + ")")
             .call(xAxis);
+
+        // Add the text label for the x axis
+        svg.append("text")
+            .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom) + ")")
+            .style("text-anchor", "middle")
+            .text("Year");
+
+
 // Add the Y Axis
         svg.append("g")
             .attr("class", "y axis")
             .call(yAxis);
+
+        // Add the text label for the Y axis
+        svg.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 30 - margin.left)
+            .attr("x",0 - (height / 2))
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("Percentage Change");
+
+
+        console.log(finalplacevalue);
+
+        svg.append("text")
+            .attr("transform", "translate(" + (width+3) + "," + y(finalplace2value) + ")")
+            .attr("dy", ".35em")
+            .attr("text-anchor", "start")
+            .style("fill", "red")
+            .text(place2);
+
+        if(place!="World"){
+            svg.append("text")
+                .attr("transform", "translate(" + (width+3) + "," + y(finalplacevalue) + ")")
+                .attr("dy", ".35em")
+                .attr("text-anchor", "start")
+                .style("fill", "steelblue")
+                .text(place);
+
+        }
 
 
     });
@@ -184,9 +225,9 @@ function draw_Methane(place){
     //console.log(place);
 // Set the dimensions of the canvas / graph
     var place2 = "World";
-    var margin = {top: 10, right: 20, bottom: 30, left: 30},
-        width = 670 - margin.left - margin.right,
-        height = 150 - margin.top - margin.bottom;
+    var margin = {top: 30, right: 180, bottom: 50, left: 100},
+        width = 1100 - margin.left - margin.right,
+        height = 250 - margin.top - margin.bottom;
 // Parse the date / time
 // Set the ranges
     var x = d3.scale.linear().range([0, width]);
@@ -220,7 +261,8 @@ function draw_Methane(place){
             "translate(" + margin.left + "," + margin.top + ")");
 // Get the data
 
-
+    var finalplacevalue=0;
+    var finalplace2value=300;
 
     d3.csv("MethaneDataT.csv", function(error, data) {
 
@@ -253,7 +295,8 @@ function draw_Methane(place){
                 d[place2] = + ((+ (+ d[place2] - maxWorld) * offsetWorld)) + 100;
                 //console.log(d[place2]);
             }
-
+            finalplacevalue = d[place];
+            finalplace2value = d[place2];
         });
 // Scale the range of the data
         x.domain(d3.extent(data, function(d) { return d.Year; }));
@@ -316,10 +359,47 @@ function draw_Methane(place){
             .attr("class", "x axis")
             .attr("transform", "translate(0," + height + ")")
             .call(xAxis);
+
+        // Add the text label for the x axis
+        svg.append("text")
+            .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom) + ")")
+            .style("text-anchor", "middle")
+            .text("Year");
+
 // Add the Y Axis
         svg.append("g")
             .attr("class", "y axis")
             .call(yAxis);
+
+        // Add the text label for the Y axis
+        svg.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 30 - margin.left)
+            .attr("x",0 - (height / 2))
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("Percentage Change");
+
+
+        console.log(finalplacevalue);
+
+        svg.append("text")
+            .attr("transform", "translate(" + (width+3) + "," + y(finalplace2value) + ")")
+            .attr("dy", ".35em")
+            .attr("text-anchor", "start")
+            .style("fill", "red")
+            .text(place2);
+
+        if(place!="World"){
+            svg.append("text")
+                .attr("transform", "translate(" + (width+3) + "," + y(finalplacevalue) + ")")
+                .attr("dy", ".35em")
+                .attr("text-anchor", "start")
+                .style("fill", "steelblue")
+                .text(place);
+
+        }
+
             var area = "";
         if(place!='World'){
             area = place+" vs ";
@@ -345,9 +425,9 @@ function draw_NO2(place){
     //console.log(place);
 // Set the dimensions of the canvas / graph
     var place2 = "World";
-    var margin = {top: 10, right: 20, bottom: 30, left: 30},
-        width = 670 - margin.left - margin.right,
-        height = 150 - margin.top - margin.bottom;
+    var margin = {top: 30, right: 180, bottom: 50, left: 100},
+        width = 1100 - margin.left - margin.right,
+        height = 250 - margin.top - margin.bottom;
 // Parse the date / time
 // Set the ranges
     var x = d3.scale.linear().range([0, width]);
@@ -380,7 +460,8 @@ function draw_NO2(place){
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 // Get the data
-
+    var finalplacevalue=0;
+    var finalplace2value=300;
 
 
     d3.csv("NO2Data.csv", function(error, data) {
@@ -414,6 +495,8 @@ function draw_NO2(place){
                 d[place2] = + ((+ (+ d[place2] - maxWorld) * offsetWorld)) + 100;
                 //console.log(d[place2]);
             }
+            finalplacevalue = d[place];
+            finalplace2value = d[place2];
 
         });
 // Scale the range of the data
@@ -477,10 +560,47 @@ function draw_NO2(place){
             .attr("class", "x axis")
             .attr("transform", "translate(0," + height + ")")
             .call(xAxis);
+
+        // Add the text label for the x axis
+        svg.append("text")
+            .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom) + ")")
+            .style("text-anchor", "middle")
+            .text("Year");
 // Add the Y Axis
         svg.append("g")
             .attr("class", "y axis")
             .call(yAxis);
+
+
+        // Add the text label for the Y axis
+        svg.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 30 - margin.left)
+            .attr("x",0 - (height / 2))
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("Percentage Change");
+
+
+        console.log(finalplacevalue);
+
+        svg.append("text")
+            .attr("transform", "translate(" + (width+3) + "," + y(finalplace2value) + ")")
+            .attr("dy", ".35em")
+            .attr("text-anchor", "start")
+            .style("fill", "red")
+            .text(place2);
+
+        if(place!="World"){
+            svg.append("text")
+                .attr("transform", "translate(" + (width+3) + "," + y(finalplacevalue) + ")")
+                .attr("dy", ".35em")
+                .attr("text-anchor", "start")
+                .style("fill", "steelblue")
+                .text(place);
+
+        }
+
         var area = "";
         if(place!='World'){
             area = place+" vs ";

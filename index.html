@@ -388,8 +388,8 @@ label {
             var min = d3.min(data, function(d){ return (+d[MAP_VALUE]); });
 			var max = d3.max(data, function(d){ return (+d[MAP_VALUE]); });
             var diff = (max-min)/1000;
-            
-            var a = 0;		   	
+
+            var a = 0;
             var array = [];
             var j = 0;
             for(var i=0;i<1000;i+=100){
@@ -513,6 +513,7 @@ label {
                     })
                     .on("click", function(d){
                         $(".content .value").html(d.properties.name);
+                        $(".countryLabel").html(d.properties.name);
                         draw_Line(d.properties.name);
                         draw_NO2(d.properties.name);
                         draw_Co2(d.properties.name);
@@ -671,7 +672,7 @@ label {
 <div class="row" style="margin-top: 10px">
     <div class="col-lg-6 panel panel-info" style="height: 180px;width: 530px">
         <div class="panel-heading" style="height:47px;margin-bottom: 1px"><h3 style="text-align: center;">Climate Change</h3></div>
-       
+
         <div class="panel-body" style="margin-top: 1px"><p style="font-size: 15px">In this visualization we try to analyse the trend of the various greenhouse gases across different countries
             and compare it with greenhouse gases in the world overall. We would like to discover any interesting trends and find reasons behind them. Select each country to view its greenhouse gas trends.</p>
         </div>
@@ -688,8 +689,25 @@ label {
 
         </div>
 
+        <div class="row">
+            <div class="col-lg-12">
+
+            <div class="col-lg-6">
+                <div class="col-lg-3 countryLabel">Country</div>
+                <div class="col-lg-2"><hr style="height:3px; width: 100%; border:none;color:steelblue;background-color:steelblue;" /> </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="col-lg-3">World</div>
+                <div class="col-lg-2"><hr style="height:3px; width: 100%; border:none;color:red;background-color:red;" /> </div>
+            </div>
+
+            </div>
+
+
                 <div id="AllgreenHouse">
+
                     <div class="col-lg-12" id="line_graph">
+
                     <script type="text/javascript">
                         draw_Line("World");
                     </script>
@@ -737,7 +755,7 @@ label {
     </div>
     <div  id ="rankChart" class = "col-lg-4" style="float: right">
         <script type="text/javascript">
-            
+
         </script>
     </div>
     <div class="row" style="margin-top: 8px; margin-left: 10px">
