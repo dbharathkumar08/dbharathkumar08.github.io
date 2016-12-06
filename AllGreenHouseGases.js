@@ -47,7 +47,7 @@ function draw_Co2(place){
         .y(function(d) { return y(d[place2]); });
 
 // Define the div for the tooltip
-    var div = d3.select("#Co2_graph").append("div")
+    var div = d3.select("body").append("div")
         .attr("class", "tooltip")
         .style("opacity", 0);
 // Adds the svg canvas
@@ -135,7 +135,8 @@ function draw_Co2(place){
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div .html("Year: "+(d.Year) + "<br/> GreenHouse: "  + valueFormat(d[place]))
+                div .html(""+place +" <br/> Year: "+d.Year.getFullYear() + "<br/> GreenHouse: "  + valueFormat(+ ((+ (+ d[place] - 100) / offset)) + max)
+                    + "<br/> Percentage: "  + valueFormat(+ d[place]))
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -156,7 +157,8 @@ function draw_Co2(place){
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div .html("Year: "+(d.Year) + "<br/> GreenHouse: "  + valueFormat(d[place2]))
+                div .html(""+place2 +" <br/> Year: "+d.Year.getFullYear() + "<br/> GreenHouse: "  + valueFormat(+ ((+ (+ d[place2] - 100) / offsetWorld)) + maxWorld)
+                    + "<br/> Percentage: "  + valueFormat(+ d[place2]))
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -249,7 +251,7 @@ function draw_Methane(place){
         .y(function(d) { return y(d[place2]); });
 
 // Define the div for the tooltip
-    var div = d3.select("#Methane_graph").append("div")
+    var div = d3.select("body").append("div")
         .attr("class", "tooltip")
         .style("opacity", 0);
 // Adds the svg canvas
@@ -325,7 +327,8 @@ function draw_Methane(place){
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div .html("Year: "+(d.Year) + "<br/> GreenHouse: "  + valueFormat(d[place]))
+                div .html(""+place +" <br/> Year: "+d.Year.getFullYear() + "<br/> GreenHouse: "  + valueFormat(+ ((+ (+ d[place] - 100) / offset)) + max)
+                    + "<br/> Percentage: "  + valueFormat(+ d[place]))
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -346,7 +349,8 @@ function draw_Methane(place){
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div .html("Year: "+(d.Year) + "<br/> GreenHouse: "  + valueFormat(d[place2]))
+                div .html(""+place2 +" <br/> Year: "+d.Year.getFullYear() + "<br/> GreenHouse: "  + valueFormat(+ ((+ (+ d[place2] - 100) / offsetWorld)) + maxWorld)
+                    + "<br/> Percentage: "  + valueFormat(+ d[place2]))
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -448,7 +452,7 @@ function draw_NO2(place){
         .y(function(d) { return y(d[place2]); });
 
 // Define the div for the tooltip
-    var div = d3.select("#No2_graph").append("div")
+    var div = d3.select("body").append("div")
         .attr("class", "tooltip")
         .style("opacity", 0);
 // Adds the svg canvas
@@ -525,7 +529,8 @@ function draw_NO2(place){
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div .html("Year: "+(d.Year) + "<br/> GreenHouse: "  + valueFormat(d[place]))
+                div .html(""+place +" <br/> Year: "+d.Year.getFullYear() + "<br/> GreenHouse: "  + valueFormat(+ ((+ (+ d[place] - 100) / offset)) + max)
+                    + "<br/> Percentage: "  + valueFormat(+ d[place]))
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -546,7 +551,8 @@ function draw_NO2(place){
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div .html("Year: "+(d.Year) + "<br/> GreenHouse: "  + valueFormat(d[place2]))
+                div .html(""+place2 +" <br/> Year: "+d.Year.getFullYear() + "<br/> GreenHouse: "  + valueFormat(+ ((+ (+ d[place2] - 100) / offsetWorld)) + maxWorld)
+                    + "<br/> Percentage: "  + valueFormat(+ d[place2]))
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
