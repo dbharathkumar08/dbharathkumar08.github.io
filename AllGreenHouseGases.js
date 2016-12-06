@@ -21,6 +21,7 @@ function draw_Co2(place){
     parent.document.getElementById("Co2_graph").innerHTML = "";
     // window.alert(place);
     //console.log(place);
+    var formatDecimal = d3.format(".1f");
 // Set the dimensions of the canvas / graph
     var place2 = "World";
     var margin = {top: 30, right: 180, bottom: 50, left: 100},
@@ -135,8 +136,8 @@ function draw_Co2(place){
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div .html(""+place +" <br/> Year: "+d.Year.getFullYear() + "<br/> Co2 Emission: "  + valueFormat(+ ((+ (+ d[place] - 100) / offset)) + max)
-                    + "<br/> Percentage: "  + valueFormat(+ d[place]))
+                div .html(""+place +" <br/><br/> Year: "+d.Year.getFullYear() + "<br/><br/> Co2 Emission: "  + valueFormat(+ ((+ (+ d[place] - 100) / offset)) + max)
+                    + "<br/><br/> Percentage: "  + formatDecimal(+ d[place])+ "%")
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -157,8 +158,8 @@ function draw_Co2(place){
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div .html(""+place2 +" <br/> Year: "+d.Year.getFullYear() + "<br/> Co2 Emission: "  + valueFormat(+ ((+ (+ d[place2] - 100) / offsetWorld)) + maxWorld)
-                    + "<br/> Percentage: "  + valueFormat(+ d[place2]))
+                div .html(""+place2 +" <br/><br/> Year: "+d.Year.getFullYear() + "<br/><br/> Co2 Emission: "  + valueFormat(+ ((+ (+ d[place2] - 100) / offsetWorld)) + maxWorld)
+                    + "<br/><br/> Percentage: "  + formatDecimal(+ d[place2])+ "%")
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -226,6 +227,7 @@ function draw_Methane(place){
     parent.document.getElementById("Methane_graph").innerHTML = "";
     // window.alert(place);
     //console.log(place);
+    var formatDecimal = d3.format(".1f");
 // Set the dimensions of the canvas / graph
     var place2 = "World";
     var margin = {top: 30, right: 180, bottom: 50, left: 100},
@@ -327,8 +329,8 @@ function draw_Methane(place){
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div .html(""+place +" <br/> Year: "+d.Year.getFullYear() + "<br/> Methane Emission: "  + valueFormat(+ ((+ (+ d[place] - 100) / offset)) + max)
-                    + "<br/> Percentage: "  + valueFormat(+ d[place]))
+                div .html(""+place +" <br/><br/> Year: "+d.Year.getFullYear() + "<br/><br/> Methane Emission: "  + valueFormat(+ ((+ (+ d[place] - 100) / offset)) + max)
+                    + "<br/><br/> Percentage: "  + formatDecimal(+ d[place])+ "%")
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -349,8 +351,8 @@ function draw_Methane(place){
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div .html(""+place2 +" <br/> Year: "+d.Year.getFullYear() + "<br/> Methane Emission: "  + valueFormat(+ ((+ (+ d[place2] - 100) / offsetWorld)) + maxWorld)
-                    + "<br/> Percentage: "  + valueFormat(+ d[place2]))
+                div .html(""+place2 +" <br/><br/> Year: "+d.Year.getFullYear() + "<br/><br/> Methane Emission: "  + valueFormat(+ ((+ (+ d[place2] - 100) / offsetWorld)) + maxWorld)
+                    + "<br/><br/> Percentage: "  + formatDecimal(+ d[place2])+ "%")
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -427,6 +429,7 @@ function draw_Methane(place){
 function draw_NO2(place){
     parent.document.getElementById("No2_graph").innerHTML = "";
 
+    var formatDecimal = d3.format(".1f");
     var place2 = "World";
     var margin = {top: 30, right: 180, bottom: 50, left: 100},
         width = 900 - margin.left - margin.right,
@@ -529,8 +532,8 @@ function draw_NO2(place){
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div .html(""+place +" <br/> Year: "+d.Year.getFullYear() + "<br/> Nitrous Emission: "  + valueFormat(+ ((+ (+ d[place] - 100) / offset)) + max)
-                    + "<br/> Percentage: "  + valueFormat(+ d[place]))
+                div .html(""+place +" <br/><br/> Year: "+d.Year.getFullYear() + "<br/><br/> Nitrous Emission: "  + valueFormat(+ ((+ (+ d[place] - 100) / offset)) + max)
+                    + "<br/><br/> Percentage: "  + formatDecimal(+ d[place])+ "%")
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -551,8 +554,8 @@ function draw_NO2(place){
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div .html(""+place2 +" <br/> Year: "+d.Year.getFullYear() + "<br/> Nitrous Emission: "  + valueFormat(+ ((+ (+ d[place2] - 100) / offsetWorld)) + maxWorld)
-                    + "<br/> Percentage: "  + valueFormat(+ d[place2]))
+                div .html(""+place2 +" <br/><br/> Year: "+d.Year.getFullYear() + "<br/><br/> Nitrous Emission: "  + valueFormat(+ ((+ (+ d[place2] - 100) / offsetWorld)) + maxWorld)
+                    + "<br/><br/> Percentage: "  + formatDecimal(+ d[place2])+ "%")
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
