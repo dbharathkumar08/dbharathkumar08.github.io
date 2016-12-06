@@ -122,7 +122,8 @@ function draw_Co2(place){
             .attr("y", 15)
             .attr("text-anchor", "middle")  
             .style("font-size", "11px") 
-            .style("text-decoration", "underline")  
+            .style("text-decoration", "underline")
+            .style("font-weight","bold")
             .text(area+"World Graph for CO2 Emission");
 
 
@@ -416,7 +417,8 @@ function draw_Methane(place){
             .attr("y", 15)
             .attr("text-anchor", "middle")  
             .style("font-size", "11px") 
-            .style("text-decoration", "underline")  
+            .style("text-decoration", "underline")
+            .style("font-weight","bold")
             .text(area+"World Graph for Methane Emission");
 
 
@@ -619,7 +621,8 @@ function draw_NO2(place){
             .attr("y", 15)
             .attr("text-anchor", "middle")  
             .style("font-size", "11px") 
-            .style("text-decoration", "underline")  
+            .style("text-decoration", "underline")
+            .style("font-weight","bold")
             .text(area+"World Graph for NO2 Emission");
 
     });

@@ -209,6 +209,7 @@ function draw_Line(place){
             .attr("text-anchor", "middle")
             .style("font-size", "11px")
             .style("text-decoration", "underline")
+            .style("font-weight","bold")
             .text(area+"World Graph for All Greenhouse Gases Emission");
 
 
