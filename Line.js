@@ -119,7 +119,7 @@ function draw_Line(place){
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div .html(""+place +" <br/> Year: "+d.Year.getFullYear() + "<br/> Greenhouse gases Emission: "  + valueFormat(+ ((+ (+ d[place] - 100) / offset)) + max)
+                 div .html(""+place +" <br/> Year: "+d.Year.getFullYear() + "<br/>  Greenhouse gases Emission: "  + valueFormat(+ ((+ (+ d[place] - 100) / offset)) + max)
                     + "<br/> Percentage: "  + valueFormat(+ d[place]))
                     .style("left", (d3.event.pageX ) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
@@ -129,6 +129,7 @@ function draw_Line(place){
                     .duration(500)
                     .style("opacity", 0);
             });
+
 
 
         svg.selectAll("dot")
